@@ -1,0 +1,199 @@
+<html>
+    <head>
+        <title>Carros</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald&display=swap">
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+
+        <header>
+
+            <nav>
+
+                <a class="logo" href="index.html">EDNALDO CARS</a>
+
+                <div class="mobile-menu">
+
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+
+                </div>
+
+                <ul class="nav-list">
+
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="cars.html">CARROS</a></li>
+                    <li><a href="cadastro.html">CADASTRO</a></li>
+                    <li><a href="login.html">LOGIN</a></li>
+
+                </ul>
+
+            </nav>
+
+        </header>
+
+        <h2>CARROS</h2>
+
+        <div id="carros">
+
+        </div><!--carros-->
+
+        <h2>CARRINHO</h2>
+
+        <div id="carrinho">
+
+        </div><!--carrinho-->
+
+        <script>
+
+            const itens = [
+                {
+                    id: 0,
+                    name: 'UNO',
+                    img: 'uno_image.jpg',
+                    quant: 0,
+                    price: 30000
+                },
+                {
+                    id: 1,
+                    name: 'CELTA',
+                    img: 'celta_image.jpg',
+                    quant: 0,
+                    price: 27000
+                },
+                {
+                    id: 2,
+                    name: 'GOL',
+                    img: 'gol_image.jpg',
+                    quant: 0,
+                    price: 35000
+                },
+                {
+                    id: 3,
+                    name: 'HB20S',
+                    img: 'hb20s_image.jpg',
+                    quant: 0,
+                    price: 50000
+                },
+                {
+                    id: 4,
+                    name: 'ETIOS SEDAN',
+                    img: 'etios_image.jpg',
+                    quant: 0,
+                    price: 45000
+                },
+                {
+                    id: 5,
+                    name: 'CIVIC',
+                    img: 'civic_image.jpg',
+                    quant: 0,
+                    price: 130000
+                },
+                {
+                    id: 6,
+                    name: 'HR-V',
+                    img: 'hrv_image.jpg',
+                    quant: 0,
+                    price: 150000
+                },
+                {
+                    id: 7,
+                    name: 'CRETA',
+                    img: 'creta_image.jpg',
+                    quant: 0,
+                    price: 145000
+                },
+                {
+                    id: 8,
+                    name: 'X1',
+                    img: 'x1_image.jpg',
+                    quant: 0,
+                    price: 230000
+                }
+            ]
+
+            inicializarLoja = () => {
+                var containerCarros = document.getElementById('carros');
+                itens.map((val)=>{
+                    containerCarros.innerHTML+= `
+
+                    <div class="carro-single">
+                        <img src="`+val.img+`" />
+                        <p>`+val.name+`</p>
+                        <p> R$ `+val.price+`</p>
+                        <a key="`+val.id+`" href="#">ADICIONAR AO CARRINHO</a>
+                    </div>
+                    `;
+                })
+            }
+
+            inicializarLoja();
+
+            atualizarCarrinho = () =>{
+                var containerCarrinho = document.getElementById(`carrinho`);
+                containerCarrinho.innerHTML = "";
+                itens.map((val)=>{
+                    if(val.quant > 0){
+                        containerCarrinho.innerHTML+= `
+                        <div class="infocarrinho">
+                        <p style="float:left;">CARRO: `+val.name+`</p>
+                        <p style="float:right;">QUANTIDADE: `+val.quant+`</p>
+                        <div style="clear:both"></div>
+                        </div>
+                    `;
+                    }
+                })
+            }
+
+            var links = document.getElementsByTagName('a');
+
+            for(var i = 0; i < links.length; i++){
+                links[i].addEventListener("click",function(){
+                    let key = this.getAttribute('key');
+                    itens[key].quant++;
+                    atualizarCarrinho();
+                    return false;
+                })
+            }
+
+        </script>
+
+        <script src="mobile-navbar.js"></script>
+
+        <main></main>
+
+        <footer>
+            <div class="boxs">
+                <h4>Ajuda</h4>
+                <ul>
+                    <li><a href="#">Duvidas</a></li>
+                    <li><a href="#">Fale Conosco</a></li>
+                </ul>
+            </div>
+
+            <div class="boxs">
+                <h4>Sobre a Ednaldo Cars</h4>
+                <ul>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Lojas</a></li>
+                </ul>
+            </div>
+
+            <div class="boxs">
+                <h4>Redes Sociais</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/oficialednaldopereira/">Instagram</a></li>
+                    <li><a href="https://twitter.com/oednaldopereira">Twitter</a></li>
+                    <li><a href="https://www.tiktok.com/@ednaldopereiraoficial">TikTok</a></li>
+                </ul>
+            </div>
+
+        </footer>
+
+    </body>
+</html>
